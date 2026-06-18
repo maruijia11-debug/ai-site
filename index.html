@@ -7,112 +7,222 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-  body { background:#05060a; }
-  .glass{ background:rgba(255,255,255,0.06); backdrop-filter:blur(10px);}
-  .card:hover{ transform:translateY(-6px); transition:.3s; box-shadow:0 0 25px rgba(0,255,255,.25);}
+  body {
+    background: #05060a;
+  }
+
+  .glass {
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(10px);
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    transition: 0.3s;
+    box-shadow: 0 0 25px rgba(0,255,255,0.25);
+  }
+
+  .btn:hover {
+    box-shadow: 0 0 20px rgba(0,255,255,0.4);
+  }
 </style>
 </head>
 
 <body class="text-white">
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 <section class="relative h-screen flex items-center justify-center text-center">
+
   <div class="absolute inset-0">
-    <img src="assets/bg.jpg" class="w-full h-full object-cover opacity-40 blur-sm"/>
+    <img src="assets/bg.jpg"
+         class="w-full h-full object-cover opacity-40 blur-sm"/>
     <div class="absolute inset-0 bg-black/70"></div>
   </div>
 
   <div class="relative z-10 max-w-3xl px-6">
-    <h1 class="text-5xl font-bold mb-6">AI 服务平台</h1>
-    <p class="text-gray-300 mb-8">GPT · Claude · Gemini · Grok</p>
 
-    <div class="flex gap-4 justify-center">
-      <button onclick="scrollToPrice()" class="bg-cyan-500 px-6 py-3 rounded-xl">查看价格</button>
-      <button onclick="openContact()" class="border px-6 py-3 rounded-xl">联系客服</button>
+    <h1 class="text-5xl font-bold mb-6">
+      AI 服务平台
+    </h1>
+
+    <p class="text-gray-300 text-lg mb-8">
+      GPT · Claude · Gemini · Grok 多模型服务
+    </p>
+
+    <div class="flex gap-4 justify-center flex-wrap">
+
+      <button onclick="scrollToPrice()"
+        class="bg-gradient-to-r from-cyan-500 to-purple-500 px-6 py-3 rounded-xl btn">
+        查看价格
+      </button>
+
+      <button onclick="openContact()"
+        class="border px-6 py-3 rounded-xl hover:bg-white/10">
+        联系客服
+      </button>
+
     </div>
   </div>
 </section>
 
-<!-- PRICE -->
+<!-- ================= PRICE ================= -->
 <section id="price" class="max-w-6xl mx-auto px-6 py-20">
-<h2 class="text-3xl font-bold text-center mb-10">价格体系</h2>
 
-<div class="grid md:grid-cols-4 gap-6">
+  <h2 class="text-3xl font-bold text-center mb-12">
+    商品价格
+  </h2>
 
-<div class="glass p-6 rounded-2xl card" onclick="openModal('grok')">
-<h3 class="text-purple-400 font-bold">Grok</h3>
-<p>160/月</p><p>300/2个月</p><p>1600/年</p>
-</div>
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-<div class="glass p-6 rounded-2xl card" onclick="openModal('gpt')">
-<h3 class="text-green-400 font-bold">ChatGPT</h3>
-<p>160/月</p><p>1500/年</p><p>850-1400/月</p>
-</div>
-
-<div class="glass p-6 rounded-2xl card" onclick="openModal('claude')">
-<h3 class="text-orange-400 font-bold">Claude</h3>
-<p>150/月</p><p>5x / 20x</p>
-</div>
-
-<div class="glass p-6 rounded-2xl card" onclick="openModal('gemini')">
-<h3 class="text-blue-400 font-bold">Gemini</h3>
-<p>175/年</p><p>150/3个月</p>
-</div>
-
-</div>
-</section>
-
-<!-- MODAL -->
-<div id="modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center">
-  <div class="bg-gray-900 p-6 rounded-2xl w-96">
-    <div id="modalContent"></div>
-    <button onclick="closeModal()" class="mt-4 w-full border py-2 rounded">关闭</button>
-  </div>
-</div>
-
-<!-- CONTACT -->
-<div id="contact" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center">
-  <div class="bg-gray-900 p-6 rounded-2xl w-96 text-center">
-    <div class="flex gap-2 mb-4">
-      <button onclick="tab('qq')" class="flex-1 border py-2">QQ</button>
-      <button onclick="tab('wx')" class="flex-1 border py-2">微信</button>
+    <div class="glass p-6 rounded-2xl card cursor-pointer" onclick="openModal('grok')">
+      <h3 class="text-purple-400 text-xl font-bold mb-3">Grok</h3>
+      <p>160/月</p>
+      <p>300/2个月</p>
+      <p>1600/年</p>
     </div>
 
-    <div id="qq"><img src="assets/qq_qr.jpg" class="w-48 mx-auto"/></div>
-    <div id="wx" class="hidden"><img src="assets/wechat_qr.jpg" class="w-48 mx-auto"/></div>
+    <div class="glass p-6 rounded-2xl card cursor-pointer" onclick="openModal('gpt')">
+      <h3 class="text-green-400 text-xl font-bold mb-3">ChatGPT</h3>
+      <p>Plus 160/月</p>
+      <p>Plus年付 1500/年</p>
+      <p>Pro 900~1580/月</p>
+    </div>
 
-    <button onclick="closeContact()" class="mt-4 w-full bg-cyan-500 py-2 rounded">关闭</button>
+    <div class="glass p-6 rounded-2xl card cursor-pointer" onclick="openModal('claude')">
+      <h3 class="text-orange-400 text-xl font-bold mb-3">Claude</h3>
+      <p>150/月</p>
+      <p>5x / 20x</p>
+      <p>无质保</p>
+    </div>
+
+    <div class="glass p-6 rounded-2xl card cursor-pointer" onclick="openModal('gemini')">
+      <h3 class="text-blue-400 text-xl font-bold mb-3">Gemini</h3>
+      <p>175/年</p>
+      <p>150/3个月</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= PRICE MODAL ================= -->
+<div id="modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center">
+
+  <div class="bg-gray-900 p-6 rounded-2xl w-96">
+
+    <h2 class="text-xl font-bold mb-4">套餐详情</h2>
+
+    <div id="modalContent" class="space-y-2 text-sm text-gray-300"></div>
+
+    <button class="mt-6 w-full bg-cyan-500 py-2 rounded">
+      确认选择
+    </button>
+
+    <button onclick="closeModal()" class="mt-3 w-full border py-2 rounded">
+      关闭
+    </button>
+
   </div>
 </div>
 
+<!-- ================= CONTACT MODAL ================= -->
+<div id="contactModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center">
+
+  <div class="bg-gray-900 p-6 rounded-2xl w-[360px]">
+
+    <h2 class="text-xl font-bold mb-4">联系客服</h2>
+
+    <div class="flex gap-2 mb-4">
+      <button onclick="showTab('qq')" class="flex-1 py-2 bg-white/10 rounded">
+        QQ客服
+      </button>
+      <button onclick="showTab('wechat')" class="flex-1 py-2 bg-white/10 rounded">
+        微信客服
+      </button>
+    </div>
+
+    <div id="qqTab" class="text-center">
+      <img src="assets/qq_qr.jpg" class="w-44 h-44 mx-auto mb-3 rounded"/>
+      <p class="text-gray-300 text-sm">QQ客服二维码</p>
+    </div>
+
+    <div id="wechatTab" class="hidden text-center">
+      <img src="assets/wechat_qr.jpg" class="w-44 h-44 mx-auto mb-3 rounded"/>
+      <p class="text-gray-300 text-sm">微信客服二维码</p>
+    </div>
+
+    <button onclick="closeContact()"
+      class="mt-4 w-full bg-cyan-500 py-2 rounded">
+      关闭
+    </button>
+
+  </div>
+</div>
+
+<!-- ================= SCRIPT ================= -->
 <script>
-const data={
- grok:["160/月","300/2个月","1600/年"],
- gpt:["160/月","1500/年","850-1400/月"],
- claude:["150/月","5x/20x"],
- gemini:["175/年","150/3个月"]
+
+const data = {
+  grok: [
+    "160元/月",
+    "300/两个月",
+    "1600/年"
+  ],
+
+  gpt: [
+    "ChatGPT Plus 成品 160/月（暂无）",
+    "ChatGPT Plus 代充 160/月",
+    "ChatGPT Plus 充值 1500/年",
+    "ChatGPT Pro 900/月",
+    "ChatGPT Pro 1580/月"
+  ],
+
+  claude: [
+    "Claude Pro 150/月（无质保）",
+    "Claude 5x 900/月",
+    "Claude 20x 1500/月"
+  ],
+
+  gemini: [
+    "Gemini Pro 175/年（无质保）",
+    "Gemini Pro 150/3个月（无质保）"
+  ]
 };
 
-function openModal(t){
- document.getElementById('modal').classList.remove('hidden');
- document.getElementById('modalContent').innerHTML =
- (data[t]||[]).map(i=>`<div class='p-2 bg-white/10 rounded mb-2'>${i}</div>`).join('');
+// 打开价格弹窗
+function openModal(type){
+  document.getElementById("modal").classList.remove("hidden");
+
+  document.getElementById("modalContent").innerHTML =
+    data[type].map(i => `<div class='bg-white/10 p-2 rounded'>${i}</div>`).join('');
 }
 
-function closeModal(){modal.classList.add('hidden')}
-
-function openContact(){document.getElementById('contact').classList.remove('hidden')}
-function closeContact(){document.getElementById('contact').classList.add('hidden')}
-
-function tab(t){
- document.getElementById('qq').classList.add('hidden')
- document.getElementById('wx').classList.add('hidden')
- document.getElementById(t=='qq'?'qq':'wx').classList.remove('hidden')
+function closeModal(){
+  document.getElementById("modal").classList.add("hidden");
 }
 
+// 客服弹窗
+function openContact(){
+  document.getElementById("contactModal").classList.remove("hidden");
+}
+
+function closeContact(){
+  document.getElementById("contactModal").classList.add("hidden");
+}
+
+// 切换QQ/微信
+function showTab(type){
+  document.getElementById("qqTab").classList.add("hidden");
+  document.getElementById("wechatTab").classList.add("hidden");
+
+  document.getElementById(type === 'qq' ? 'qqTab' : 'wechatTab')
+    .classList.remove("hidden");
+}
+
+// 滚动到价格
 function scrollToPrice(){
- document.getElementById('price').scrollIntoView({behavior:'smooth'})
+  document.getElementById("price").scrollIntoView({behavior:'smooth'});
 }
+
 </script>
 
 </body>
